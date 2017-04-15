@@ -1,8 +1,6 @@
 set(SRCS
             arm/disassembler/arm_disasm.cpp
             arm/disassembler/load_symbol_map.cpp
-            arm/dynarmic/arm_dynarmic.cpp
-            arm/dynarmic/arm_dynarmic_cp15.cpp
             arm/dyncom/arm_dyncom.cpp
             arm/dyncom/arm_dyncom_dec.cpp
             arm/dyncom/arm_dyncom_interpreter.cpp
@@ -180,8 +178,6 @@ set(HEADERS
             arm/arm_interface.h
             arm/disassembler/arm_disasm.h
             arm/disassembler/load_symbol_map.h
-            arm/dynarmic/arm_dynarmic.h
-            arm/dynarmic/arm_dynarmic_cp15.h
             arm/dyncom/arm_dyncom.h
             arm/dyncom/arm_dyncom_dec.h
             arm/dyncom/arm_dyncom_interpreter.h
@@ -367,11 +363,21 @@ set(HEADERS
             settings.h
             )
 
-include_directories(../../externals/dynarmic/include)
+if (ARCHITECTURE_x86_64)
+    set(SRCS ${SRCS} arm/dynarmic/arm_dynarmic.cpp arm/dynarmic/arm_dynarmic_cp15.cpp)
+    set(HEADERS ${HEADERS} arm/dynarmic/arm_dynarmic.h arm/dynarmic/arm_dynarmic_cp15.h)
+
+    include_directories(../../externals/dynarmic/include)
+endif()
+
 include_directories(../../externals/cryptopp)
 
 create_directory_groups(${SRCS} ${HEADERS})
 
 add_library(core STATIC ${SRCS} ${HEADERS})
 
-target_link_libraries(core dynarmic cryptopp)
+target_link_libraries(core cryptopp)
+
+if(ARCHITECTURE_x86_64)
+    target_link_libraries(core dynarmic)
+endif()

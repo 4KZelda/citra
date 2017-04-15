@@ -7,7 +7,9 @@
 #include "audio_core/audio_core.h"
 #include "common/logging/log.h"
 #include "core/arm/arm_interface.h"
+#ifdef ARCHITECTURE_x86_64
 #include "core/arm/dynarmic/arm_dynarmic.h"
+#endif // ARCHITECTURE_x86_64
 #include "core/arm/dyncom/arm_dyncom.h"
 #include "core/core.h"
 #include "core/core_timing.h"
@@ -125,11 +127,12 @@ void System::Reschedule() {
 System::ResultStatus System::Init(EmuWindow* emu_window, u32 system_mode) {
     Memory::Init();
 
-    if (Settings::values.use_cpu_jit) {
+	#ifdef ARCHITECTURE_x86_64
+    if (Settings::values.use_cpu_jit)
         cpu_core = std::make_unique<ARM_Dynarmic>(USER32MODE);
-    } else {
+    else 
+	#endif // ARCHITECTURE_x86_64
         cpu_core = std::make_unique<ARM_DynCom>(USER32MODE);
-    }
 
     CoreTiming::Init();
     HW::Init();

@@ -257,8 +257,10 @@ add_subdirectory(${INI_PREFIX})
 
 add_subdirectory(externals)
 
-option(DYNARMIC_TESTS OFF)
-add_subdirectory(externals/dynarmic)
+if (ARCHITECTURE_x86_64)
+	option(DYNARMIC_TESTS OFF)
+	add_subdirectory(externals/dynarmic)
+endif()
 
 add_subdirectory(externals/glad)
 include_directories(externals/microprofile)
