@@ -41,6 +41,31 @@ option(CITRA_USE_BUNDLED_SDL2 "Download bundled SDL2 binaries" OFF)
 option(ENABLE_QT "Enable the Qt frontend" ON)
 option(CITRA_USE_BUNDLED_QT "Download bundled Qt binaries" OFF)
 
+if(ANDROID)
+  message(STATUS "Building for Android")
+  if(NOT ENABLE_HEADLESS)
+    add_definitions(-DANDROID)
+  else()
+    # Lie to cmake a bit. We are cross compiling to Android
+    # but not as a shared library. We want an executable.
+    set(ANDROID 0)
+  endif()
+  set(USE_EGL 1)
+  set(ENABLE_SDL2 0)
+  set(ENABLE_QT 0)
+
+  # We are cross compiling, search only the toolchain for libraries and includes
+  SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+  SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+  SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+  SET(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+endif()
+
+if(USE_EGL)
+  message(STATUS "EGL OpenGL interface enabled")
+  add_definitions(-DUSE_EGL=1)
+endif()
+
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/.git/hooks/pre-commit)
     message(STATUS "Copying pre-commit hook")
     file(COPY hooks/pre-commit
@@ -147,8 +172,10 @@ include_directories(${Boost_INCLUDE_DIR})
 # Include bundled CMake modules
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/externals/cmake-modules")
 
+if (NOT ANDROID)
 find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
+endif()
 
 # Prefer the -pthread flag on Linux.
 set (THREADS_PREFER_PTHREAD_FLAG ON)
@@ -272,6 +299,15 @@ endif()
 
 # process subdirectories
 add_subdirectory(externals/soundtouch)
+
+if (NOT ANDROID)
+	check_lib(ICONV ICONV iconv.h)
+endif()
+if (NOT ICONV_FOUND)
+	message("Using static iconv from Externals")
+	include_directories(Externals/libiconv/include)
+	add_subdirectory(Externals/libiconv)
+endif()
 
 enable_testing()
 
