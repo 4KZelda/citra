@@ -23,5 +23,5 @@
     path = externals/cryptopp/cryptopp
     url = https://github.com/weidai11/cryptopp.git
 [submodule "libiconv"]
-	path = externals/libiconv
-	url = https://github.com/4KZelda/libiconv.git
+    path = externals/libiconv
+    url = https://github.com/4KZelda/libiconv.git

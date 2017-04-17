@@ -127,11 +127,11 @@ void System::Reschedule() {
 System::ResultStatus System::Init(EmuWindow* emu_window, u32 system_mode) {
     Memory::Init();
 
-	#ifdef ARCHITECTURE_x86_64
+    #ifdef ARCHITECTURE_x86_64
     if (Settings::values.use_cpu_jit)
         cpu_core = std::make_unique<ARM_Dynarmic>(USER32MODE);
     else 
-	#endif // ARCHITECTURE_x86_64
+    #endif // ARCHITECTURE_x86_64
         cpu_core = std::make_unique<ARM_DynCom>(USER32MODE);
 
     CoreTiming::Init();
