@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="org.citraemu.citraemu.activities.EmulationActivity">
+
+    <item
+        android:id="@+id/menu_emulation_configure_controls"
+        android:showAsAction="never"
+        android:title="@string/emulation_configure_controls">
+        <menu>
+            <item
+                android:id="@+id/menu_emulation_edit_layout"
+                android:title="@string/emulation_edit_layout"/>
+
+            <item
+                android:id="@+id/menu_emulation_toggle_controls"
+                android:title="@string/emulation_toggle_controls"/>
+
+            <item
+                android:id="@+id/menu_emulation_adjust_scale"
+                android:title="@string/emulation_control_scale"/>
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- All lists for ListPreference keys/values are placed here -->
+<resources>
+
+    <string-array name="combo_languageValues" translatable="false">
+        <item>Japanese (日本語)</item>
+        <item>English</item>
+        <item>French (français)</item>
+        <item>German (Deutsch)</item>
+        <item>Italian (italiano)</item>
+        <item>Spanish (español)</item>
+        <item>Simplified Chinese (简体中文)</item>
+        <item>Korean (한국어)</item>
+        <item>Dutch (Nederlands)</item>
+        <item>Portuguese (português)</item>
+        <item>Russian (Русский)</item>
+        <item>Traditional Chinese (正體中文)</item>
+    </string-array>
+
+    <string-array name="layout_comboboxEntries">
+        <item>Default</item>
+        <item>Single Screen</item>
+        <item>Large Screen</item>
+    </string-array>
+    <string-array name="layout_comboboxValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="region_comboboxEntries" translatable="false">
+        <item>Auto-select</item>
+        <item>JPN</item>
+        <item>USA</item>
+        <item>EUR</item>
+        <item>AUS</item>
+        <item>CHN</item>
+        <item>KOR</item>
+        <item>TWN</item>
+    </string-array>
+
+    <string-array name="resolution_factor_combobox" translatable="false">
+        <item>Auto (Window Size)</item>
+        <item>Native (400x240)</item>
+        <item>2x Native (800x480)</item>
+        <item>3x Native (1200x720)</item>
+        <item>4x Native (1600x960)</item>
+        <item>5x Native (2000x1200)</item>
+        <item>6x Native (2400x1440)</item>
+        <item>7x Native (2800x1680)</item>
+        <item>8x Native (3200x1920)</item>
+        <item>9x Native (3600x2160)</item>
+        <item>10x Native (4000x2400)</item>
+    </string-array>
+    <integer-array name="resolution_factor_comboboxValues" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </integer-array>
+
+    <string-array name="countryNames">
+        <item>Europe</item>
+        <item>Japan</item>
+        <item>USA</item>
+        <item>Australia</item>
+        <item>France</item>
+        <item>Germany</item>
+        <item>Italy</item>
+        <item>Korea</item>
+        <item>Netherlands</item>
+        <item>Russia</item>
+        <item>Spain</item>
+        <item>Taiwan</item>
+        <item>Unknown</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/graphics">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="resolution_factor"
+            android:title="@string/toggle_hw_renderer" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="use_shader_jit"
+            android:title="@string/toggle_shader_jit" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="use_vsync"
+            android:title="@string/toggle_vsync" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="toggle_framelimit"
+            android:title="@string/toggle_framelimit" />
+
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/resolution_factor_combobox"
+            android:entryValues="@array/resolution_factor_comboboxValues"
+            android:key="resolution_factor"
+            android:summary="@string/internal_resolution_descrip"
+            android:title="@string/internal_resolution" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/layout">
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/layout_comboboxEntries"
+            android:entryValues="@array/layout_comboboxValues"
+            android:key="layout_option"
+            android:title="@string/layout_combobox" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="swap_screen"
+            android:title="@string/swap_screen" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

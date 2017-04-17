@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/core">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="Paths\gameListDeepScan"
+            android:title="@string/toggle_deepscan" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/performance">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="use_cpu_jit"
+            android:title="@string/toggle_cpu_jit" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/emulation">
+        <ListPreference
+            android:entries="@array/region_comboboxEntries"
+            android:entryValues="@array/region_comboboxEntries"
+            android:key="region_value"
+            android:title="@string/region_combobox" />
+    </PreferenceCategory>
+</PreferenceScreen>

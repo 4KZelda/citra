@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/systemSettings">
+        <EditTextPreference
+            android:key="username"
+            android:maxLength="10"
+            android:title="@string/username"
+            android:defaultValue="@string/app_name_lower"/>
+        <ListPreference
+            android:entries="@array/combo_languageValues"
+            android:entryValues="@array/combo_languageValues"
+            android:key="language"
+            android:summary="@string/combo_language_tooltip"
+            android:title="@string/combo_language" />
+    </PreferenceCategory>
+</PreferenceScreen>
