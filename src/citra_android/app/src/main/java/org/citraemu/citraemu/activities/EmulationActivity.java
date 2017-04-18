@@ -159,25 +159,6 @@ public final class EmulationActivity extends AppCompatActivity
 
 		if (savedInstanceState == null)
 		{
-			Animations.fadeViewOut(mImageView)
-					.setStartDelay(2000)
-					.withStartAction(new Runnable()
-					{
-						@Override
-						public void run()
-						{
-							mFrameEmulation.setVisibility(View.VISIBLE);
-						}
-					})
-					.withEndAction(new Runnable()
-					{
-						@Override
-						public void run()
-						{
-							mImageView.setVisibility(View.GONE);
-						}
-					});
-
 			// Instantiate an EmulationFragment.
 			EmulationFragment emulationFragment = EmulationFragment.newInstance(path);
 
