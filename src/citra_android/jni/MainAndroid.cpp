@@ -364,7 +364,7 @@ JNIEXPORT jintArray JNICALL Java_org_citraemu_citraemu_NativeLibrary_GetIcon(JNI
 {
   std::string filename = GetJString(env, jFilename);
   bool large = (bool)(large == JNI_TRUE);
-  Loader::SMDH smdh = GetSMDH(g_filename);
+  Loader::SMDH smdh = GetSMDH(filename);
 
   std::vector<u16> icon_data = smdh.GetIcon(large); //FIXME copy this to Banner
   jintArray Banner = env->NewIntArray(LARGE_BANNER_HEIGHT_WIDTH * LARGE_BANNER_HEIGHT_WIDTH);
