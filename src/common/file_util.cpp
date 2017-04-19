@@ -687,13 +687,17 @@ const std::string& GetUserPath(const unsigned int DirIDX, const std::string& new
 
     // Set up all paths and files on the first run
     if (paths[D_USER_IDX].empty()) {
-#ifdef _WIN32
+#if defined(_WIN32) || defined(ANDROID)
+        #ifdef _WIN32
         paths[D_USER_IDX] = GetExeDirectory() + DIR_SEP USERDATA_DIR DIR_SEP;
         if (!FileUtil::IsDirectory(paths[D_USER_IDX])) {
             paths[D_USER_IDX] = AppDataRoamingDirectory() + DIR_SEP EMU_DATA_DIR DIR_SEP;
         } else {
             LOG_INFO(Common_Filesystem, "Using the local user directory");
         }
+        #else
+        paths[D_USER_IDX] = "/sdcard" DIR_SEP EMU_DATA_DIR DIR_SEP;
+        #endif
 
         paths[D_CONFIG_IDX] = paths[D_USER_IDX] + CONFIG_DIR DIR_SEP;
         paths[D_CACHE_IDX] = paths[D_USER_IDX] + CACHE_DIR DIR_SEP;
